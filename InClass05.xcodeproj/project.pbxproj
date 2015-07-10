@@ -31,6 +31,7 @@
 		3F0414081B501CC90066F3C6 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0413F61B501CC90066F3C6 /* UIImageView+HighlightedWebCache.m */; };
 		3F0414091B501CC90066F3C6 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0413F81B501CC90066F3C6 /* UIImageView+WebCache.m */; };
 		3F04140A1B501CC90066F3C6 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0413FA1B501CC90066F3C6 /* UIView+WebCacheOperation.m */; };
+		3F04140D1B50278E0066F3C6 /* PhotoDetailCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F04140C1B50278E0066F3C6 /* PhotoDetailCellTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,8 @@
 		3F0413F81B501CC90066F3C6 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		3F0413F91B501CC90066F3C6 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		3F0413FA1B501CC90066F3C6 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		3F04140B1B50278E0066F3C6 /* PhotoDetailCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDetailCellTableViewCell.h; sourceTree = "<group>"; };
+		3F04140C1B50278E0066F3C6 /* PhotoDetailCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoDetailCellTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +143,8 @@
 				3F0413D61B4F3C190066F3C6 /* PhotoDisplayViewController.h */,
 				3F0413D71B4F3C190066F3C6 /* PhotoDisplayViewController.m */,
 				3F0413BA1B4F2C1D0066F3C6 /* Main.storyboard */,
+				3F04140B1B50278E0066F3C6 /* PhotoDetailCellTableViewCell.h */,
+				3F04140C1B50278E0066F3C6 /* PhotoDetailCellTableViewCell.m */,
 				3F0413D91B501CC90066F3C6 /* SDWebImage */,
 				3F0413BD1B4F2C1D0066F3C6 /* Images.xcassets */,
 				3F0413BF1B4F2C1D0066F3C6 /* LaunchScreen.xib */,
@@ -317,6 +322,7 @@
 			files = (
 				3F0414081B501CC90066F3C6 /* UIImageView+HighlightedWebCache.m in Sources */,
 				3F0414061B501CC90066F3C6 /* UIImage+MultiFormat.m in Sources */,
+				3F04140D1B50278E0066F3C6 /* PhotoDetailCellTableViewCell.m in Sources */,
 				3F0414011B501CC90066F3C6 /* SDWebImageDownloaderOperation.m in Sources */,
 				3F0413B91B4F2C1D0066F3C6 /* ViewController.m in Sources */,
 				3F0413FE1B501CC90066F3C6 /* SDWebImageCompat.m in Sources */,

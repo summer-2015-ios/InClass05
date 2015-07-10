@@ -9,10 +9,12 @@
 #import "ViewController.h"
 #import "PhotoDisplayViewController.h"
 #import "UIImageView+WebCache.h"
+#import "PhotoDetailCellTableViewCell.h"
 
-@interface ViewController () <UITableViewDataSource, UITableViewDelegate>
-@property (weak, nonatomic) IBOutlet UITextField *searchField;
+@interface ViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
+@property (weak, nonatomic) IBOutlet UISearchBar *searchField;
 @property (strong, nonatomic) NSMutableArray* photos;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @end
 
 @implementation ViewController
@@ -34,15 +36,25 @@ static NSString* url = @"https://api.flickr.com/services/rest/?method=flickr.pho
     return self.photos.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"myCell"];
-    UILabel* title = (UILabel*)[cell viewWithTag:100];
+    PhotoDetailCellTableViewCell* cell = (PhotoDetailCellTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"myCell"];
+    if(!cell){
+        cell = [[PhotoDetailCellTableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"myCell"];
+    }
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    UILabel* title = (UILabel*)[cell textView];
     title.text = [self.photos[indexPath.row] valueForKey:@"title"];
-    [(UIImageView*)[cell viewWithTag:200] sd_setImageWithURL: [NSURL URLWithString:[self.photos[indexPath.row] valueForKey:@"url_m" ] ]];
+    [(UIImageView*)[cell imageView] sd_setImageWithURL: [NSURL URLWithString:[self.photos[indexPath.row] valueForKey:@"url_m" ] ]];
     //[self loadPhotoWithUrl:[self.photos[indexPath.row] valueForKey:@"url_m"] InCell:cell];
     return cell;
 }
-- (IBAction)searchBtnClicked:(id)sender {
-    NSString *searchTxt = self.searchField.text;
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    NSLog(@"inside search bar");
+    [searchBar resignFirstResponder];
+    [self searchBtnClicked:searchBar.text];
+}
+- (void)searchBtnClicked:(NSString*)txt {
+    [[self activityIndicator] startAnimating];
+    NSString *searchTxt = txt;
     NSURLRequest *request  = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", url, [searchTxt stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]]];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     [[session dataTaskWithRequest:request
@@ -61,9 +73,11 @@ static NSString* url = @"https://api.flickr.com/services/rest/?method=flickr.pho
                     self.photos = [dataDict valueForKeyPath:@"photos.photo"];
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [(UITableView*)[self.view viewWithTag:1000] reloadData];
+                        [[self activityIndicator] stopAnimating];
                     });
                     
-                }] resume];
+                }]
+     resume];
 }
 
 -(void) loadPhotoWithUrl:(NSString *)url InCell:(UITableViewCell*) cell {
@@ -93,5 +107,9 @@ static NSString* url = @"https://api.flickr.com/services/rest/?method=flickr.pho
         NSString* url = [self.photos[row] valueForKey:@"url_m"];
         pvc.url = url;
     }
+}
+-(IBAction)doneDetail:(UIStoryboardSegue*) sender{
+    NSLog(@"inside done detail");
+    //[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 @end
