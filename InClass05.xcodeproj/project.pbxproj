@@ -14,6 +14,7 @@
 		3F0413BE1B4F2C1D0066F3C6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F0413BD1B4F2C1D0066F3C6 /* Images.xcassets */; };
 		3F0413C11B4F2C1D0066F3C6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F0413BF1B4F2C1D0066F3C6 /* LaunchScreen.xib */; };
 		3F0413CD1B4F2C1D0066F3C6 /* InClass05Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0413CC1B4F2C1D0066F3C6 /* InClass05Tests.m */; };
+		3F0413D81B4F3C190066F3C6 /* PhotoDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0413D71B4F3C190066F3C6 /* PhotoDisplayViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		3F0413C61B4F2C1D0066F3C6 /* InClass05Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InClass05Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F0413CB1B4F2C1D0066F3C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F0413CC1B4F2C1D0066F3C6 /* InClass05Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InClass05Tests.m; sourceTree = "<group>"; };
+		3F0413D61B4F3C190066F3C6 /* PhotoDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDisplayViewController.h; sourceTree = "<group>"; };
+		3F0413D71B4F3C190066F3C6 /* PhotoDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoDisplayViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,8 @@
 				3F0413B51B4F2C1D0066F3C6 /* AppDelegate.m */,
 				3F0413B71B4F2C1D0066F3C6 /* ViewController.h */,
 				3F0413B81B4F2C1D0066F3C6 /* ViewController.m */,
+				3F0413D61B4F3C190066F3C6 /* PhotoDisplayViewController.h */,
+				3F0413D71B4F3C190066F3C6 /* PhotoDisplayViewController.m */,
 				3F0413BA1B4F2C1D0066F3C6 /* Main.storyboard */,
 				3F0413BD1B4F2C1D0066F3C6 /* Images.xcassets */,
 				3F0413BF1B4F2C1D0066F3C6 /* LaunchScreen.xib */,
@@ -221,6 +226,7 @@
 			files = (
 				3F0413B91B4F2C1D0066F3C6 /* ViewController.m in Sources */,
 				3F0413B61B4F2C1D0066F3C6 /* AppDelegate.m in Sources */,
+				3F0413D81B4F3C190066F3C6 /* PhotoDisplayViewController.m in Sources */,
 				3F0413B31B4F2C1D0066F3C6 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
