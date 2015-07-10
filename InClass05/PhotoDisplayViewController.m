@@ -7,6 +7,7 @@
 //
 
 #import "PhotoDisplayViewController.h"
+#import "UIImageView+WebCache.h"
 
 @interface PhotoDisplayViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
@@ -18,20 +19,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSURLRequest *request  = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", self.url]]];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    [[session dataTaskWithRequest:request
-                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                    if(error){
-                        NSLog(@"error : %@", error);
-                        return ;
-                    }
-                    UIImage *image = [UIImage imageWithData:data];
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        self.photoImageView.image = image;
-                    });
-                    
-                }] resume];
+    
+    [self.photoImageView sd_setImageWithURL: [NSURL URLWithString: self.url ]];
+//
+//    NSURLRequest *request  = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", self.url]]];
+//    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+//    [[session dataTaskWithRequest:request
+//                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//                    if(error){
+//                        NSLog(@"error : %@", error);
+//                        return ;
+//                    }
+//                    UIImage *image = [UIImage imageWithData:data];
+//                    dispatch_async(dispatch_get_main_queue(), ^{
+//                        self.photoImageView.image = image;
+//                    });
+//                    
+//                }] resume];
 
 }
 
