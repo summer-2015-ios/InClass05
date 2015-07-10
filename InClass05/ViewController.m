@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "PhotoDisplayViewController.h"
+#import "UIImageView+WebCache.h"
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *searchField;
@@ -36,12 +37,13 @@ static NSString* url = @"https://api.flickr.com/services/rest/?method=flickr.pho
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"myCell"];
     UILabel* title = (UILabel*)[cell viewWithTag:100];
     title.text = [self.photos[indexPath.row] valueForKey:@"title"];
-    [self loadPhotoWithUrl:[self.photos[indexPath.row] valueForKey:@"url_m"] InCell:cell];
+    [(UIImageView*)[cell viewWithTag:200] sd_setImageWithURL: [NSURL URLWithString:[self.photos[indexPath.row] valueForKey:@"url_m" ] ]];
+    //[self loadPhotoWithUrl:[self.photos[indexPath.row] valueForKey:@"url_m"] InCell:cell];
     return cell;
 }
 - (IBAction)searchBtnClicked:(id)sender {
     NSString *searchTxt = self.searchField.text;
-    NSURLRequest *request  = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", url, searchTxt]]];
+    NSURLRequest *request  = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", url, [searchTxt stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]]];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     [[session dataTaskWithRequest:request
                 completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -63,6 +65,7 @@ static NSString* url = @"https://api.flickr.com/services/rest/?method=flickr.pho
                     
                 }] resume];
 }
+
 -(void) loadPhotoWithUrl:(NSString *)url InCell:(UITableViewCell*) cell {
     NSURLRequest *request  = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", url]]];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
